@@ -1,4 +1,4 @@
-//Quitting the window only after escape is pressed
+//Quitting the window only after 'X' is pressed on the window
 
 #include "SDL2/SDL.h"
 #include<iostream>
@@ -76,7 +76,7 @@ class SDL_ImageDisplay {
 		SDL_Event event;
 		
 		//All events pressed by the keyboard, joystick, mouse are stored in the event queue. The SDL_PollEvent
-		//polls for the event queue and checks for the event type	
+		//polls the events in the event queue until the queue is exhausted and checks for the event type	
 		while(SDL_PollEvent(&event)){
 			
 			if(event.type == SDL_QUIT) {
