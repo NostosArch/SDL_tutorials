@@ -4,6 +4,6 @@ The objective of this repository is to document my understanding of the SDL libr
 
 how to run ?
 
-g++ _file-name_ -lSDL2 -o output
+g++ _file-name_ -lSDL2 -lSDL2_image -o output
 
 ./output
