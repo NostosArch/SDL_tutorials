@@ -1,4 +1,4 @@
-//Getting an Image on Screen
+//Resizing an image and displaying it on Screen
 
 #include "SDL2/SDL.h"
 #include<iostream>
@@ -59,17 +59,29 @@ class SDL_ImageDisplay {
 		//The loaded image is in 24 bit format, SDL requires it to be 32 bit format
 		//This conversion is done so that blitting is done faster and coversion is not required everytime you blit the loaded surface
 		optimized_surface = SDL_ConvertSurface(loaded_surface, screen_surface->format, 0);
+		
+		//loaded image width and height
+
+		float loaded_width = optimized_surface->w;
+		float loaded_height = optimized_surface->h;
+		float scale = loaded_width / loaded_height;
+
+		//Resizing Image keeping the aspect ratio	
+		float resized_image_width =  loaded_width > loaded_height ?  screen_width : scale * screen_height;
+		float resized_image_height = loaded_height > loaded_width ? screen_height : (1/scale) * screen_width;
+		float resized_image_x = (screen_width - resized_image_width)/2;
+		float resized_image_y = (screen_height - resized_image_height)/2;
 
 		//Applying the dimenstion for image
-		SDL_Rect stretchRect;
+		SDL_Rect stretchRect;	
 
 		//Top left corner where the image should be placed
-		stretchRect.x = 0;
-		stretchRect.y = 0;
+		stretchRect.x = resized_image_x;
+		stretchRect.y = resized_image_y;
 
 		//setting the width and height of the image
-		stretchRect.w = screen_width;
-		stretchRect.h = screen_height;
+		stretchRect.w = resized_image_width;
+		stretchRect.h = resized_image_height;
 
 		//Scale the optimized surface according to the scales provided by stretchRect on the screen_surface
 		SDL_BlitScaled(optimized_surface, NULL, screen_surface, &stretchRect);
