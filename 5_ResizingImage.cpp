@@ -56,6 +56,8 @@ class SDL_ImageDisplay {
 		}	
 		
 		//optimized the loaded according to the screen_surface
+		//The loaded image is in 24 bit format, SDL requires it to be 32 bit format
+		//This conversion is done so that blitting is done faster and coversion is not required everytime you blit the loaded surface
 		optimized_surface = SDL_ConvertSurface(loaded_surface, screen_surface->format, 0);
 
 		//Applying the dimenstion for image

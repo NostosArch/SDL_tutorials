@@ -62,7 +62,9 @@ class SDL_ImageDisplay {
 		SDL_BlitSurface(optimized_surface, NULL, screen_surface, NULL);
 		//params : source surface, null, destination surface, null
 		//Blitting stamps a copy of the source onto the destination
-
+		//Blit means copy pixels from one part of computer graphical memory to another part
+		//Blitting is fast because it only changes element which are changing
+		
 		//Now that you have drawn something on the screen surface you have to update the window
 	        SDL_UpdateWindowSurface(window);
 		//We have two buffers front and back for these windows, when we are making changes to the screen surface we are manipulating the back surface which is not displayed on the window (i.e back buffer) after updating we switch the front buffer (i.e the one displayed on the window) with the back buffer

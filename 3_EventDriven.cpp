@@ -115,13 +115,10 @@ int main(int argc, char *args[]){
 		std::exit(1);
 	}
 
+	success = display.loadMedia();
+
 	while(!quit) {
 		
-		success = display.loadMedia();
-		if(!success){
-			std::exit(1);
-		}
-
 		quit = display.poll();
 	}
 	
