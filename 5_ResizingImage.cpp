@@ -35,8 +35,8 @@ class SDL_ImageDisplay {
 	       }
 	       
 	       //Initialize PNG flags for using SDL_image
-	       img_Flags = IMG_INIT_PNG;
-	       if( !(IMG_Init(img_Flags))) {
+	       img_Flags = IMG_INIT_JPG;
+	       if( (IMG_Init(img_Flags) != IMG_INIT_JPG)) {
 			std::cout<<"Error initialzing SDL Image "<<SDL_GetError()<<std::endl;
 	       }
 	       //Now that window has been created we have to draw on it, so get window surface
